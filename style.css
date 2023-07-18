@@ -1,51 +1,60 @@
+:root {
+  --main-color: rgb(5, 105, 50);
+  --hover-color: rgb(65, 160, 100);
+  --active-color: rgb(30,130,150);
+  --main-border: 2px solid bisque;
+  --active-box-shadow: inset 0px 0px 7px 7px black;
+}
 body {
-  background: linear-gradient(
-    0deg,
-    rgb(0, 0, 0) 10%,
-    rgb(5, 120, 60) 50%,
-    rgb(30, 130, 150) 60%,
-    rgb(25, 80, 40) 85%
-  );
   min-height: 100vh;
+  background: linear-gradient(0deg,rgb(0, 0, 0) 5%, var(--main-color) 50%,rgb(30, 130, 150) 65%,rgb(25, 80, 40) 90%)
 }
 main {
-  margin: 5vh auto;
-  width: 50%;
-  min-width: 700px;
+  width: 70%;
+  min-width: 350px;
+  margin: 10vh auto;
+}
+.menu {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 1em;
 }
 .squares__container {
   display: grid;
-  grid-template-columns: repeat(17, 1fr);
-  grid-template-rows: auto repeat(7, 1fr);
+  grid-template-columns: repeat(calc(var(--js-column-count)*5), 1fr);
   grid-gap: 0.2em;
-  margin-top: 0.5em;
   padding: 1em;
-  height: 25em;
-  background-color: rgb(5, 104, 50);
-}
-.squares__menu__input,
-.squares__menu__btn,
-.squares__square.active {
-  background-color: rgb(65, 160, 100);
-  color: bisque;
-  border-color: bisque;
-}
-.squares__container,
-.squares__square {
-  border: 1px solid black;
+  background-color: var(--main-color);
+  border: var(--main-border);
   border-radius: 0.3em;
 }
-.squares__menu {
-  display: flex;
-  justify-content: space-around;
-  grid-column: 1 / -1;
-  grid-row: 1;
-  width: 100%;
-  margin-bottom: 1em;
-}
-.squares__menu__input,
-.squares__menu__btn {
-  font-size: 2rem;
+.menu__number,
+.menu__input,
+.menu__btn {
+  font-size: 1.5rem;
   padding: 0.5em;
-  max-width: 40%;
+  border-radius: 0.3em;
+  max-width: 30%;
+  background-color: var(--main-color);
+  color: bisque;
+  border: var(--main-border);
+}
+.squares__square {
+  aspect-ratio: 1/1;
+  border: var(--main-border);
+  border-radius: inherit;
+}
+.squares__square.active {
+  background-color: var(--active-color);
+  -webkit-box-shadow: var(--active-box-shadow);
+  -moz-box-shadow: var(--active-box-shadow);
+  box-shadow: var(--active-box-shadow);
+  border: none;
+}
+.menu__number:hover,
+.menu__input:hover,
+.menu__btn:hover,
+.squares__square:hover,
+.squares__square.active:hover {
+  background-color:var(--hover-color);
 }
